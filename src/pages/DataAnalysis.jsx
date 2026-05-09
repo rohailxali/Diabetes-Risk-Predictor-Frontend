@@ -97,7 +97,7 @@ const tooltipStyle = {
   color: '#F0FDF4',
 }
 
-const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, name }) => {
+const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, name, fill }) => {
   const RADIAN = Math.PI / 180;
   const radius = outerRadius + 35;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -106,10 +106,10 @@ const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent
     <text
       x={x}
       y={y}
-      fill="#9CA3AF"
+      fill={fill}
       textAnchor={x > cx ? 'start' : 'end'}
       dominantBaseline="central"
-      fontSize={12}
+      fontSize={14}
       fontFamily="DM Mono, monospace"
     >
       {`${name} ${(percent * 100).toFixed(1)}%`}
@@ -242,7 +242,7 @@ export default function DataAnalysis() {
             <ChartCard title="Diabetes Class Distribution">
               <div style={{ padding: '0 20px' }}>
                 <ResponsiveContainer width="100%" height={300}>
-                  <PieChart margin={{ top: 20, right: 40, bottom: 20, left: 40 }}>
+                  <PieChart margin={{ top: 30, right: 40, bottom: 30, left: 40 }}>
                     <Pie
                       data={classBalance}
                       cx="50%"
@@ -338,7 +338,7 @@ export default function DataAnalysis() {
               insight="Females represent 58.3% of the dataset (55,434 patients), with males at 40.8%. The 'Other' category accounts for only 0.9% of records."
             >
               <ResponsiveContainer width="100%" height={280}>
-                <PieChart>
+                <PieChart margin={{ top: 30, right: 40, bottom: 30, left: 40 }}>
                   <Pie
                     data={genderData}
                     cx="50%"
