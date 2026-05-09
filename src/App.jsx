@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import Sidebar from './components/Sidebar'
+import BottomNav from './components/BottomNav'
 import Landing from './pages/Landing'
 import Predict from './pages/Predict'
 import Results from './pages/Results'
@@ -54,11 +55,14 @@ function AnimatedRoutes() {
       <div className="grain-overlay" aria-hidden="true" />
       <PageFlash />
 
-      {/* Sidebar — hidden on landing */}
+      {/* Sidebar — hidden on mobile, hidden on landing */}
       {!isLanding && <Sidebar />}
 
+      {/* Bottom Nav — hidden on desktop, hidden on landing */}
+      {!isLanding && <BottomNav />}
+
       {/* Page content */}
-      <main className={`flex-1 ${!isLanding ? 'ml-[64px]' : ''} min-h-screen`}>
+      <main className={`flex-1 ${!isLanding ? 'ml-0 sm:ml-[64px] pb-[72px] sm:pb-0' : ''} min-h-screen w-full overflow-x-hidden`}>
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}

@@ -82,7 +82,7 @@ export default function Intelligence() {
           <span className="font-mono-dm text-[10px] tracking-[0.2em] text-textMuted uppercase">Performance Metrics</span>
           <div className="flex-1 h-px bg-white/[0.06]" />
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
           {METRIC_DISPLAY.map((m, i) => {
             const raw = metrics[m.key] ?? 0
             const display = (raw * m.multiply).toFixed(m.decimals)
@@ -147,7 +147,7 @@ export default function Intelligence() {
           <span className="font-mono-dm text-[10px] tracking-[0.2em] text-textMuted uppercase">Data Pipeline</span>
           <div className="flex-1 h-px bg-white/[0.06]" />
         </div>
-        <div className="flex items-stretch gap-0 overflow-x-auto pb-4">
+        <div className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-0 md:overflow-x-auto pb-4">
           {pipeline.map((step, i) => (
             <motion.div key={step.step} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 + i * 0.1, duration: 0.5 }}
@@ -161,7 +161,7 @@ export default function Intelligence() {
                 <div className="font-mono-dm text-[10px] text-textMuted leading-relaxed">{step.detail}</div>
               </div>
               {i < pipeline.length - 1 && (
-                <div className="flex items-center px-2 flex-shrink-0">
+                <div className="hidden md:flex items-center px-2 flex-shrink-0">
                   <span className="font-mono-dm text-primary/40 text-xs">›</span>
                 </div>
               )}

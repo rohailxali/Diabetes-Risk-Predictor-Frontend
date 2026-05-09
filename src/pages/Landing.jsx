@@ -34,7 +34,7 @@ export default function Landing() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:w-[55%] flex flex-col justify-between px-12 py-16 lg:px-20 lg:py-20 border-r border-border"
+          className="lg:w-[55%] flex flex-col justify-between px-6 py-12 sm:px-12 sm:py-16 lg:px-20 lg:py-20 border-b lg:border-b-0 lg:border-r border-border"
         >
           {/* Header mark */}
           <div className="flex items-center gap-3">
@@ -82,7 +82,7 @@ export default function Landing() {
               transition={{ delay: 0.7, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => navigate('/predict')}
               id="cta-begin-assessment"
-              className="group mt-12 flex items-center gap-3 border border-border px-8 py-4 font-grotesk text-sm tracking-widest uppercase text-text hover:bg-primaryHover hover:border-primaryHover hover:shadow-[0_0_20px_rgba(20,184,166,0.2)] transition-all duration-300 ease-out"
+              className="group mt-12 flex items-center justify-center w-full sm:w-auto gap-3 border border-border px-8 py-4 font-grotesk text-sm tracking-widest uppercase text-text hover:bg-primaryHover hover:border-primaryHover hover:shadow-[0_0_20px_rgba(20,184,166,0.2)] transition-all duration-300 ease-out"
             >
               Begin Assessment
               <ArrowRight
@@ -105,7 +105,7 @@ export default function Landing() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:w-[45%] flex flex-col justify-between px-12 py-16 lg:px-16 lg:py-20 bg-surface"
+          className="lg:w-[45%] flex flex-col justify-between px-6 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20 bg-surface"
         >
           {/* Instrument label */}
           <div className="flex items-center justify-between">

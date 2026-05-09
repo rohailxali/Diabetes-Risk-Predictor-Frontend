@@ -240,15 +240,15 @@ export default function DataAnalysis() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Donut chart */}
             <ChartCard title="Diabetes Class Distribution">
-              <div style={{ padding: '0 20px' }}>
+              <div>
                 <ResponsiveContainer width="100%" height={300}>
-                  <PieChart margin={{ top: 30, right: 40, bottom: 30, left: 40 }}>
+                  <PieChart margin={{ top: 30, right: 120, bottom: 30, left: 120 }}>
                     <Pie
                       data={classBalance}
                       cx="50%"
                       cy="50%"
-                      innerRadius={70}
-                      outerRadius={100}
+                      innerRadius={60}
+                      outerRadius={90}
                       paddingAngle={3}
                       dataKey="value"
                       label={renderCustomLabel}
@@ -338,7 +338,7 @@ export default function DataAnalysis() {
               insight="Females represent 58.3% of the dataset (55,434 patients), with males at 40.8%. The 'Other' category accounts for only 0.9% of records."
             >
               <ResponsiveContainer width="100%" height={280}>
-                <PieChart margin={{ top: 30, right: 40, bottom: 30, left: 40 }}>
+                <PieChart margin={{ top: 30, right: 90, bottom: 30, left: 90 }}>
                   <Pie
                     data={genderData}
                     cx="50%"
@@ -383,19 +383,23 @@ export default function DataAnalysis() {
             title="Mean Values — Diabetic vs Non-Diabetic"
             insight="Diabetic patients consistently show elevated values across all four biomarkers. Glucose and HbA1c show the largest relative differences, confirming their clinical significance."
           >
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={bivariateData} barSize={28} barGap={6}>
-                <CartesianGrid strokeDasharray="3 3" stroke={GRID} vertical={false} />
-                <XAxis dataKey="feature" tick={{ fill: GREY, fontSize: 11, fontFamily: 'DM Mono' }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: GREY, fontSize: 10, fontFamily: 'DM Mono' }} axisLine={false} tickLine={false} width={45} />
-                <Tooltip contentStyle={tooltipStyle} />
-                <Legend
-                  wrapperStyle={{ fontFamily: 'DM Mono', fontSize: 11, color: MUTED, paddingTop: 16 }}
-                />
-                <Bar dataKey="noDiabetes" name="No Diabetes" fill={TEAL} radius={[2, 2, 0, 0]} />
-                <Bar dataKey="diabetes" name="Diabetes" fill={RED} radius={[2, 2, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="overflow-x-auto pb-4">
+              <div className="min-w-[600px]">
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={bivariateData} barSize={28} barGap={6}>
+                    <CartesianGrid strokeDasharray="3 3" stroke={GRID} vertical={false} />
+                    <XAxis dataKey="feature" tick={{ fill: GREY, fontSize: 11, fontFamily: 'DM Mono' }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fill: GREY, fontSize: 10, fontFamily: 'DM Mono' }} axisLine={false} tickLine={false} width={45} />
+                    <Tooltip contentStyle={tooltipStyle} />
+                    <Legend
+                      wrapperStyle={{ fontFamily: 'DM Mono', fontSize: 11, color: MUTED, paddingTop: 16 }}
+                    />
+                    <Bar dataKey="noDiabetes" name="No Diabetes" fill={TEAL} radius={[2, 2, 0, 0]} />
+                    <Bar dataKey="diabetes" name="Diabetes" fill={RED} radius={[2, 2, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
           </ChartCard>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">

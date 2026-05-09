@@ -204,7 +204,7 @@ export default function Predict() {
                 <div className="flex items-end justify-between gap-4">
                   <input id="input-bmi" type="number" value={form.bmi} onChange={e => set('bmi', e.target.value)}
                     min={10} max={100} step={0.1} required placeholder="28.3"
-                    className="bg-transparent border-none outline-none font-mono-dm text-offwhite w-32 placeholder:text-offwhite-dim/30"
+                    className="bg-transparent border-none outline-none font-mono-dm text-offwhite w-full sm:w-32 placeholder:text-offwhite-dim/30"
                     style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }} />
                   <FieldIndicator status={getBmiStatus(form.bmi)} />
                 </div>
@@ -213,7 +213,7 @@ export default function Predict() {
                 <div className="flex items-end justify-between gap-4">
                   <input id="input-hba1c" type="number" value={form.HbA1c_level} onChange={e => set('HbA1c_level', e.target.value)}
                     min={3} max={15} step={0.1} required placeholder="5.5"
-                    className="bg-transparent border-none outline-none font-mono-dm text-text w-32 placeholder:text-textMuted/30"
+                    className="bg-transparent border-none outline-none font-mono-dm text-text w-full sm:w-32 placeholder:text-textMuted/30"
                     style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }} />
                   <FieldIndicator status={getHbA1cStatus(form.HbA1c_level)} />
                 </div>
@@ -223,7 +223,7 @@ export default function Predict() {
                   <input id="input-glucose" type="number" value={form.blood_glucose_level}
                     onChange={e => set('blood_glucose_level', e.target.value)}
                     min={50} max={400} required placeholder="125"
-                    className="bg-transparent border-none outline-none font-mono-dm text-text w-32 placeholder:text-textMuted/30"
+                    className="bg-transparent border-none outline-none font-mono-dm text-text w-full sm:w-32 placeholder:text-textMuted/30"
                     style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)' }} />
                   <FieldIndicator status={getGlucoseStatus(form.blood_glucose_level)} />
                 </div>
@@ -280,7 +280,7 @@ export default function Predict() {
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
             <button id="btn-submit-prediction" type="submit"
-              className="group flex items-center gap-3 bg-primary px-10 py-5 font-grotesk text-sm tracking-widest uppercase text-white hover:bg-primaryHover hover:shadow-[0_0_20px_rgba(20,184,166,0.3)] transition-all duration-300">
+              className="group flex justify-center items-center gap-3 w-full sm:w-auto bg-primary px-10 py-5 font-grotesk text-sm tracking-widest uppercase text-white hover:bg-primaryHover hover:shadow-[0_0_20px_rgba(20,184,166,0.3)] transition-all duration-300">
               Analyze Risk Profile
               <span className="font-mono-dm text-xs opacity-60 group-hover:opacity-100 transition-opacity">→</span>
             </button>

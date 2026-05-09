@@ -40,7 +40,7 @@ function ExportCSV({ history }) {
 
   return (
     <button onClick={handleExport} id="btn-export-history"
-      className="group flex items-center gap-2 font-grotesk text-xs text-textMuted hover:text-text tracking-wider uppercase transition-colors duration-200">
+      className="group flex justify-center w-full sm:w-auto items-center gap-2 font-grotesk text-xs text-textMuted hover:text-text tracking-wider uppercase border border-border sm:border-none px-4 py-3 sm:p-0 transition-colors duration-200">
       <Download size={12} />
       Export CSV
     </button>
@@ -133,7 +133,7 @@ export default function History() {
     <div className="min-h-screen bg-background px-8 lg:px-16 py-12">
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }} className="flex items-start justify-between mb-16">
+        transition={{ duration: 0.5 }} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-16">
         <div>
           <span className="font-mono-dm text-[10px] tracking-[0.25em] text-primary uppercase">04 / History</span>
           <h1 className="font-grotesk font-600 text-text mt-3 leading-tight"
@@ -142,11 +142,11 @@ export default function History() {
             {history.length} assessment{history.length !== 1 ? 's' : ''} recorded this session
           </p>
         </div>
-        <div className="flex items-center gap-6 mt-2">
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
           <ExportCSV history={history} />
           {history.length > 0 && (
             <button onClick={clearHistory} id="btn-clear-history"
-              className="group flex items-center gap-2 font-grotesk text-xs text-textMuted hover:text-danger tracking-wider uppercase transition-colors duration-200">
+              className="group flex justify-center w-full sm:w-auto items-center gap-2 font-grotesk text-xs text-textMuted hover:text-danger tracking-wider uppercase border border-border sm:border-none px-4 py-3 sm:p-0 transition-colors duration-200">
               <Trash2 size={12} />
               Clear
             </button>
@@ -164,8 +164,9 @@ export default function History() {
           </p>
         </motion.div>
       ) : (
-        <div>
-          {/* Table header */}
+        <div className="overflow-x-auto pb-4">
+          <div className="min-w-[600px]">
+            {/* Table header */}
           <div className="flex items-center gap-4 py-3 border-b border-white/[0.08] pl-[18px]">
             <span className="font-mono-dm text-[9px] text-textMuted tracking-widest uppercase w-6">#</span>
             <span className="font-mono-dm text-[9px] text-textMuted tracking-widest uppercase w-40 hidden sm:block">Timestamp</span>
@@ -180,6 +181,7 @@ export default function History() {
             {history.map((entry, i) => (
               <HistoryRow key={entry.id} entry={entry} index={i} />
             ))}
+          </div>
           </div>
         </div>
       )}

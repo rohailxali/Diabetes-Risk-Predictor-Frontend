@@ -30,7 +30,7 @@ export default function Sidebar() {
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
-      className="fixed left-0 top-0 h-screen bg-surface border-r border-white/[0.04] z-50 flex flex-col overflow-hidden"
+      className="fixed left-0 top-0 h-screen bg-surface border-r border-white/[0.04] z-50 hidden sm:flex flex-col overflow-hidden"
       style={{ boxShadow: '4px 0 24px rgba(0,0,0,0.4)' }}
     >
       {/* Logo mark */}

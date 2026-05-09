@@ -37,7 +37,9 @@ export default function ParticleBackground() {
     document.addEventListener('visibilitychange', handleVisibilityChange)
 
     // Initialize particles
-    const particles = Array.from({ length: PARTICLE_CONFIG.count }).map(() => ({
+    const isMobile = window.innerWidth < 640
+    const particleCount = isMobile ? 30 : PARTICLE_CONFIG.count
+    const particles = Array.from({ length: particleCount }).map(() => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
       vx: (Math.random() - 0.5) * PARTICLE_CONFIG.speed,

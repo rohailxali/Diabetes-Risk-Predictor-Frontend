@@ -179,7 +179,7 @@ export default function Results() {
     <div className="min-h-screen bg-background px-8 lg:px-16 py-12">
       {/* Header */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}
-        className="flex items-center justify-between mb-16">
+        className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-16">
         <div>
           <span className="font-mono-dm text-[10px] tracking-[0.25em] text-primary uppercase">02 / Results</span>
           <h1 className="font-grotesk font-600 text-text mt-2 leading-tight"
@@ -196,11 +196,11 @@ export default function Results() {
       <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="mb-4 relative">
         <div className="font-grotesk font-700 leading-none tracking-tight"
-          style={{ fontSize: 'clamp(5rem, 18vw, 14rem)', color: riskColor, opacity: 0.15 }}>
+          style={{ fontSize: 'clamp(3rem, 15vw, 14rem)', color: riskColor, opacity: 0.15 }}>
           {risk_level.toUpperCase()}
         </div>
         <motion.div className="font-grotesk font-700 leading-none tracking-tight absolute top-0 left-0"
-          style={{ fontSize: 'clamp(5rem, 18vw, 14rem)', color: riskColor }}
+          style={{ fontSize: 'clamp(3rem, 15vw, 14rem)', color: riskColor }}
           animate={{ textShadow: ['0 0 0px transparent', `0 0 28px ${riskColor}`, '0 0 0px transparent'] }}
           transition={{ delay: 1.9, duration: 1.8, ease: 'easeInOut', times: [0, 0.5, 1] }}>
           {risk_level.toUpperCase()}
@@ -261,14 +261,16 @@ export default function Results() {
 
       {/* Comparison vs normal ranges */}
       <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.75, duration: 0.6 }} className="mt-16 max-w-3xl">
-        <div className="flex items-center gap-4 mb-8">
-          <span className="font-mono-dm text-[10px] tracking-[0.2em] text-textMuted uppercase">vs Normal Ranges</span>
-          <div className="flex-1 h-px bg-white/[0.06]" />
+        transition={{ delay: 0.75, duration: 0.6 }} className="mt-16 max-w-3xl overflow-x-auto pb-4">
+        <div className="min-w-[500px]">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="font-mono-dm text-[10px] tracking-[0.2em] text-textMuted uppercase">vs Normal Ranges</span>
+            <div className="flex-1 h-px bg-white/[0.06]" />
+          </div>
+          {NORMAL_RANGES.map(item => (
+            <DivergingBar key={item.key} item={item} patientValue={input[item.key]} />
+          ))}
         </div>
-        {NORMAL_RANGES.map(item => (
-          <DivergingBar key={item.key} item={item} patientValue={input[item.key]} />
-        ))}
       </motion.div>
 
       {/* CTA to intelligence */}
