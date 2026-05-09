@@ -5,6 +5,7 @@ import Landing from './pages/Landing'
 import Predict from './pages/Predict'
 import Results from './pages/Results'
 import Intelligence from './pages/Intelligence'
+import DataAnalysis from './pages/DataAnalysis'
 import History from './pages/History'
 import { PatientHistoryProvider } from './context/PatientHistoryContext'
 
@@ -72,6 +73,7 @@ function AnimatedRoutes() {
               <Route path="/predict" element={<Predict />} />
               <Route path="/results" element={<Results />} />
               <Route path="/intelligence" element={<Intelligence />} />
+              <Route path="/analysis" element={<DataAnalysis />} />
               <Route path="/history" element={<History />} />
             </Routes>
           </motion.div>

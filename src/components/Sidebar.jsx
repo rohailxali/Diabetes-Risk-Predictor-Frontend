@@ -15,6 +15,7 @@ const NAV_ITEMS = [
   { to: '/predict',     icon: ClipboardList,label: 'Assessment',     short: 'AS' },
   { to: '/results',     icon: BarChart2,    label: 'Results',        short: 'RS' },
   { to: '/intelligence',icon: Brain,        label: 'Intelligence',   short: 'IN' },
+  { to: '/analysis',    icon: BarChart2,    label: 'Data Analysis',  short: 'DA' },
   { to: '/history',     icon: History,      label: 'History',        short: 'HX' },
 ]
 
