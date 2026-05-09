@@ -97,6 +97,26 @@ const tooltipStyle = {
   color: '#F0FDF4',
 }
 
+const renderCustomLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, name }) => {
+  const RADIAN = Math.PI / 180;
+  const radius = outerRadius + 35;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="#9CA3AF"
+      textAnchor={x > cx ? 'start' : 'end'}
+      dominantBaseline="central"
+      fontSize={12}
+      fontFamily="DM Mono, monospace"
+    >
+      {`${name} ${(percent * 100).toFixed(1)}%`}
+    </text>
+  );
+};
+
 // ─────────────────────────────────────────────
 // Reusable animation wrapper
 // ─────────────────────────────────────────────
@@ -220,30 +240,32 @@ export default function DataAnalysis() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Donut chart */}
             <ChartCard title="Diabetes Class Distribution">
-              <ResponsiveContainer width="100%" height={280}>
-                <PieChart>
-                  <Pie
-                    data={classBalance}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={75}
-                    outerRadius={110}
-                    paddingAngle={3}
-                    dataKey="value"
-                    label={({ name, value }) => `${name}: ${value}%`}
-                    labelLine={false}
-                  >
-                    <Cell fill={TEAL} />
-                    <Cell fill={RED} />
-                  </Pie>
-                  <Tooltip
-                    contentStyle={tooltipStyle}
-                    formatter={(val, name, props) =>
-                      [`${val}% (${props.payload.count.toLocaleString()} patients)`, name]
-                    }
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+              <div style={{ padding: '0 20px' }}>
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart margin={{ top: 20, right: 40, bottom: 20, left: 40 }}>
+                    <Pie
+                      data={classBalance}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={70}
+                      outerRadius={100}
+                      paddingAngle={3}
+                      dataKey="value"
+                      label={renderCustomLabel}
+                      labelLine={{ stroke: '#1E2D2D', strokeWidth: 1 }}
+                    >
+                      <Cell fill={TEAL} />
+                      <Cell fill={RED} />
+                    </Pie>
+                    <Tooltip
+                      contentStyle={tooltipStyle}
+                      formatter={(val, name, props) =>
+                        [`${val}% (${props.payload.count.toLocaleString()} patients)`, name]
+                      }
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
             </ChartCard>
 
             {/* Editorial text */}
@@ -315,16 +337,17 @@ export default function DataAnalysis() {
               title="Gender Distribution"
               insight="Females represent 58.3% of the dataset (55,434 patients), with males at 40.8%. The 'Other' category accounts for only 0.9% of records."
             >
-              <ResponsiveContainer width="100%" height={220}>
+              <ResponsiveContainer width="100%" height={280}>
                 <PieChart>
                   <Pie
                     data={genderData}
                     cx="50%"
                     cy="50%"
-                    outerRadius={90}
+                    outerRadius={80}
                     dataKey="value"
                     paddingAngle={3}
-                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(1)}%`}
+                    label={renderCustomLabel}
+                    labelLine={{ stroke: '#1E2D2D', strokeWidth: 1 }}
                   >
                     {genderData.map((_, i) => (
                       <Cell key={i} fill={GENDER_COLORS[i]} />
